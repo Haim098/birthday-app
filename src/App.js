@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Stories from './components/Stories';
+import Gallery from './components/Gallery';
+import VideoGreetings from './components/VideoGreetings';
+import Timeline from './components/Timeline';
+import MomQuotes from './components/MomQuotes';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Happy Birthday, Mom!</h1>
       </header>
+      <main>
+        <Stories />
+        <Gallery />
+        <VideoGreetings />
+        <Timeline />
+        <MomQuotes />
+      </main>
     </div>
   );
 }
