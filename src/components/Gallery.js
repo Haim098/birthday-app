@@ -7,7 +7,7 @@ function Gallery() {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/images')
+    axios.get('/api/images')
       .then(response => setImages(response.data))
       .catch(error => console.error('Error fetching images:', error));
   }, []);
@@ -18,7 +18,7 @@ function Gallery() {
     formData.append('description', description);
     formData.append('image', image);
 
-    axios.post('http://localhost:5000/api/images', formData)
+    axios.post('/api/images', formData)
       .then(response => {
         setImages([...images, response.data]);
         setDescription('');
@@ -28,7 +28,7 @@ function Gallery() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/images/${id}`)
+    axios.delete(`/api/images/${id}`)
       .then(() => {
         setImages(images.filter(image => image._id !== id));
       })

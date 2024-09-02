@@ -6,14 +6,14 @@ function MomQuotes() {
   const [quote, setQuote] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quotes')
+    axios.get('/api/quotes')
       .then(response => setQuotes(response.data))
       .catch(error => console.error('Error fetching quotes:', error));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/quotes', { quote })
+    axios.post('/api/quotes', { quote })
       .then(response => {
         setQuotes([...quotes, response.data]);
         setQuote('');
@@ -22,7 +22,7 @@ function MomQuotes() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/quotes/${id}`)
+    axios.delete(`/api/quotes/${id}`)
       .then(() => {
         setQuotes(quotes.filter(quote => quote._id !== id));
       })

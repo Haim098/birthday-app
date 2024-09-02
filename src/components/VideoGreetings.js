@@ -7,7 +7,7 @@ function VideoGreetings() {
   const [video, setVideo] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/videos')
+    axios.get('/api/videos')
       .then(response => setVideos(response.data))
       .catch(error => console.error('Error fetching videos:', error));
   }, []);
@@ -18,7 +18,7 @@ function VideoGreetings() {
     formData.append('title', title);
     formData.append('video', video);
 
-    axios.post('http://localhost:5000/api/videos', formData)
+    axios.post('/api/videos', formData)
       .then(response => {
         setVideos([...videos, response.data]);
         setTitle('');
@@ -28,7 +28,7 @@ function VideoGreetings() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/videos/${id}`)
+    axios.delete(`/api/videos/${id}`)
       .then(() => {
         setVideos(videos.filter(video => video._id !== id));
       })
