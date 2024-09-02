@@ -7,14 +7,14 @@ function Stories() {
   const [story, setStory] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/stories')
+    axios.get('/api/stories')
       .then(response => setStories(response.data))
       .catch(error => console.error('Error fetching stories:', error));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/stories', { name, story })
+    axios.post('/api/stories', { name, story })
       .then(response => {
         setStories([...stories, response.data]);
         setName('');
@@ -24,7 +24,7 @@ function Stories() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/stories/${id}`)
+    axios.delete(`/api/stories/${id}`)
       .then(() => {
         setStories(stories.filter(story => story._id !== id));
       })
