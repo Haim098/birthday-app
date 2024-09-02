@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Stories from './components/Stories';
@@ -14,14 +14,14 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/stories" component={Stories} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/video-greetings" component={VideoGreetings} />
-          <Route path="/timeline" component={Timeline} />
-          <Route path="/mom-quotes" component={MomQuotes} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/video-greetings" element={<VideoGreetings />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/mom-quotes" element={<MomQuotes />} />
+        </Routes>
       </div>
     </Router>
   );
